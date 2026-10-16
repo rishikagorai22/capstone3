@@ -1,0 +1,9 @@
+.env
+lambda_env.json
+package/
+*.zip
+model.onnx
+tokenizer.json
+__pycache__/
+*.pyc
+opensearch-access-policy.json

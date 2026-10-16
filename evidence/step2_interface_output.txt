@@ -1,0 +1,43 @@
+[TOKENS] component=sql_generation input=307 output=24 cost_usd=0.001281
+[TOKENS] component=sql_interpretation input=70 output=16 cost_usd=0.000450
+[TOKENS] component=retrieval_answer_generation input=855 output=331 cost_usd=0.007530
+SQL agent top-level keys:       ['success', 'answer', 'sources', 'metadata']
+Retrieval agent top-level keys: ['success', 'answer', 'sources', 'metadata']
+
+SQL answer: ## Active Projects
+
+You currently have **5 active projects**.
+Retrieval answer: ## New Consultant Onboarding Process
+
+Here is a comprehensive overview of the onboarding process for new consultants:
+
+**Before Start Date:**
+- IT ships a laptop and sets up accounts [Source 1]
+
+**Day One:**
+- Meet their onboarding buddy [Source 1]
+- Complete security and compliance training [Source 1]
+- Receive access to the time-tracking system [Source 1]
+
+**Week One:**
+- Attend firm orientation [Source 1]
+- Meet their practice lead [Source 1]
+
+**Weeks Two and Three:**
+- Shadow an active client engagement [Source 1]
+- Begin logging billable hours under supervision [Source 1]
+
+**Week Four:**
+- Take on a first assigned task [Source 1]
+
+**Ongoing Check-ins:**
+- Meetings with the practice lead at 30, 60, and 90 days [Source 1]
+
+**Role-Specific Training (First Month):**
+- **Associates** complete a two-day analytics tooling workshop [Source 1] [Source 3]
+- **Senior Hires and Principals** complete a one-day client-engagement leadership session instead [Source 3]
+
+**Mandatory Requirement:**
+- Every new consultant must complete the **mandatory data-handling course** before being given access to any client data [Source 3]
+
+- New hires are also required to **work on-site for their first two weeks** [Source 5]

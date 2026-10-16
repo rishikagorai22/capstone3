@@ -1,0 +1,14 @@
+
+- Client dinners are **reimbursable up to $75 per person** (Retrieval Agent: expense-policy.txt)
+- **Alcohol is not reimbursable** (Retrieval Agent: expense-policy.txt)
+
+======================================================================
+component                    calls    in_tok   out_tok    cost_usd
+retrieval_answer_generation      6      7357       887    0.035376
+synthesis                        8      2691      1248    0.026793
+classification                  10      2318        44    0.007614
+sql_generation                   6      1884       241    0.009267
+sql_interpretation               5       589       452    0.008547
+
+TOTAL COST (USD): 0.087597
+Most tokens consumed by: retrieval_answer_generation

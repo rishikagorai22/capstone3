@@ -1,0 +1,4 @@
+RDS table clients: 6 rows
+RDS table projects: 8 rows
+RDS table consultants: 10 rows
+RDS table invoices: 10 rows

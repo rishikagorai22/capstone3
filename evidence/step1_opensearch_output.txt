@@ -1,0 +1,5 @@
+Indexed 1 chunks from expense-policy.txt
+Indexed 1 chunks from onboarding-process.txt
+Indexed 1 chunks from project-delivery-playbook.txt
+Indexed 1 chunks from remote-work-policy.txt
+OpenSearch documents index count: 20

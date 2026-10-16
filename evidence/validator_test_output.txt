@@ -1,0 +1,16 @@
+======================================================================
+VALIDATOR TEST SUITE
+======================================================================
+[PASS] valid SELECT: valid=True (expected True)
+[PASS] DROP blocked: valid=False (expected False)
+[PASS] DELETE blocked: valid=False (expected False)
+[PASS] UPDATE blocked: valid=False (expected False)
+[PASS] INSERT blocked: valid=False (expected False)
+[PASS] column deleted_at allowed (whole word match): valid=True (expected True)
+[PASS] stacked WITH keyword blocked: valid=False (expected False)
+[PASS] stacked, NO keyword, blocked (proves stacking check is independent): valid=False (expected False)
+[PASS] single trailing semicolon allowed: valid=True (expected True)
+[PASS] mixed case blocked: valid=False (expected False)
+[PASS] newline-separated stacked blocked: valid=False (expected False)
+
+All tests passed: True

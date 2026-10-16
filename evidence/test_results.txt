@@ -1,0 +1,227 @@
+[TOKENS] component=classification input=226 output=4 cost_usd=0.000738
+[TOKENS] component=sql_generation input=307 output=24 cost_usd=0.001281
+[TOKENS] component=sql_interpretation input=70 output=16 cost_usd=0.000450
+[TOKENS] component=synthesis input=139 output=23 cost_usd=0.000762
+
+======================================================================
+TEST 1 [RDS only]
+Question: How many active projects do we have?
+Route: sql
+sql_result present: True | retrieval_result present: False
+SQL validation status: PASSED
+SQL used: ["SQL: SELECT COUNT(*) AS active_project_count\nFROM projects\nWHERE status = 'active'"]
+Answer: Based on the information available, you currently have **5 active projects**. (SQL Agent)
+[TOKENS] component=classification input=228 output=4 cost_usd=0.000744
+[TOKENS] component=sql_generation input=309 output=80 cost_usd=0.002127
+[TOKENS] component=sql_interpretation input=141 output=30 cost_usd=0.000873
+[TOKENS] component=synthesis input=222 output=26 cost_usd=0.001056
+
+======================================================================
+TEST 2 [RDS only]
+Question: Which client has the highest total invoiced amount?
+Route: sql
+sql_result present: True | retrieval_result present: False
+SQL validation status: PASSED
+SQL used: ['SQL: SELECT c.name, SUM(i.amount) AS total_invoiced_amount\nFROM clients c\nJOIN projects p ON p.client_id = c.id\nJOIN invoices i ON i.project_id = p.id\nGROUP BY c.id, c.name\nORDER BY total_invoiced_amount DESC\nLIMIT 1']
+Answer: **Beta Financial** has the highest total invoiced amount at **$165,000**. (SQL Agent)
+[TOKENS] component=classification input=230 output=5 cost_usd=0.000765
+[TOKENS] component=retrieval_answer_generation input=894 output=313 cost_usd=0.007377
+[TOKENS] component=synthesis input=473 output=434 cost_usd=0.007929
+
+======================================================================
+TEST 3 [Documents only]
+Question: What is our onboarding process for new consultants?
+Route: retrieval
+sql_result present: False | retrieval_result present: True
+SQL validation status: n/a (sql agent did not run)
+Answer: ## Onboarding Process for New Consultants
+
+Here is a summary of the onboarding process based on available information:
+
+---
+
+### Before Start Date
+- IT ships a laptop and sets up accounts *(Retrieval Agent: onboarding-process.txt)*
+
+### Day One
+- Meet their onboarding buddy *(Retrieval Agent: onboarding-process.txt)*
+- Complete security and compliance training *(Retrieval Agent: onboarding-process.txt)*
+- Receive access to the time-tracking system *(Retrieval Agent: onboarding-process.txt)*
+
+### Week One
+- Attend firm orientation *(Retrieval Agent: onboarding-process.txt)*
+- Meet their practice lead *(Retrieval Agent: onboarding-process.txt)*
+
+### Weeks Two and Three
+- Shadow an active client engagement *(Retrieval Agent: onboarding-process.txt)*
+- Begin logging billable hours under supervision *(Retrieval Agent: onboarding-process.txt)*
+
+### Week Four
+- Take on a first assigned task *(Retrieval Agent: onboarding-process.txt)*
+
+### Ongoing Check-ins
+- Check-in meetings with the practice lead at **30, 60, and 90 days** *(Retrieval Agent: onboarding-process.txt)*
+
+---
+
+### Role-Specific Training (First Month)
+- **Associates** complete a **two-day analytics tooling workshop** *(Retrieval Agent: onboarding-process.txt)*
+- **Senior hires and Principals** complete a **one-day client-engagement leadership session** instead *(Retrieval Agent: onboarding-process.txt)*
+
+### Mandatory Requirement
+- Every new consultant must complete the **mandatory data-handling course** before being given access to any client data *(Retrieval Agent: onboarding-process.txt)*
+[TOKENS] component=classification input=234 output=5 cost_usd=0.000777
+[TOKENS] component=retrieval_answer_generation input=950 output=66 cost_usd=0.003840
+[TOKENS] component=synthesis input=227 output=124 cost_usd=0.002541
+
+======================================================================
+TEST 4 [Documents only]
+Question: How much is the home office stipend and when must receipts be submitted?
+Route: retrieval
+sql_result present: False | retrieval_result present: True
+SQL validation status: n/a (sql agent did not run)
+Answer: **Home Office Stipend Details:**
+
+- **Amount:** The home office stipend is a one-time payment of **$600**, which can be used to purchase equipment such as a desk, chair, or monitor. *(Retrieval Agent: remote-work-policy.pdf / remote-work-policy.txt)*
+
+- **Receipt Submission Deadline:** Receipts must be submitted **within 60 days of the employee's start date**. *(Retrieval Agent: remote-work-policy.pdf / remote-work-policy.txt)*
+[TOKENS] component=classification input=243 output=4 cost_usd=0.000789
+[TOKENS] component=sql_generation input=324 output=24 cost_usd=0.001332
+[TOKENS] component=sql_interpretation input=87 output=119 cost_usd=0.002046
+[TOKENS] component=retrieval_answer_generation input=945 output=188 cost_usd=0.005655
+[TOKENS] component=synthesis input=508 output=243 cost_usd=0.005169
+
+======================================================================
+TEST 5 [Both]
+Question: How many active projects do we have, and what does our onboarding process say about a new consultant's first week?
+Route: both
+sql_result present: True | retrieval_result present: True
+SQL validation status: PASSED
+SQL used: ["SQL: SELECT COUNT(*) AS active_project_count\nFROM projects\nWHERE status = 'active'"]
+Answer: ## Answer
+
+### Number of Active Projects
+There are **5 active projects** currently. (SQL Agent)
+
+> Note: The Retrieval Agent only identified **one active project** (the Customer Portal project) from the documents it searched (Retrieval Agent: project-delivery-playbook.txt), but the SQL Agent queried the projects database directly and returned a count of **5**, which is the more authoritative and complete source for this figure.
+
+---
+
+### New Consultant's First Week
+According to the onboarding process documentation (Retrieval Agent: onboarding-process.txt), during the first week, new consultants:
+
+- Attend **firm orientation**
+- **Meet their practice lead**
+
+On **Day One** specifically, the consultant:
+- Meets their **onboarding buddy**
+- Completes **security and compliance training**
+- Receives access to the **time-tracking system**
+
+---
+
+*Both parts of the question have been answered. The active project count comes from a direct database query, and the onboarding details come from onboarding-process.txt.*
+[TOKENS] component=classification input=245 output=4 cost_usd=0.000795
+[TOKENS] component=sql_generation input=326 output=78 cost_usd=0.002148
+[TOKENS] component=sql_interpretation input=218 output=263 cost_usd=0.004599
+[TOKENS] component=retrieval_answer_generation input=1078 output=258 cost_usd=0.007104
+[TOKENS] component=synthesis input=775 output=295 cost_usd=0.006750
+
+======================================================================
+TEST 6 [Both]
+Question: Which projects are currently on hold, and what does our project delivery playbook say we must do when a project is put on hold?
+Route: both
+sql_result present: True | retrieval_result present: True
+SQL validation status: PASSED
+SQL used: ["SQL: SELECT p.id AS project_id, p.name AS project_name, p.start_date, p.end_date, p.budget, c.name AS client_name, c.region, c.industry FROM projects p JOIN clients c ON p.client_id = c.id WHERE p.status = 'on_hold'"]
+Answer: ## Projects Currently On Hold & Playbook Requirements
+
+### Projects Currently On Hold
+
+There is **1 project currently on hold** (SQL Agent):
+
+| Field | Details |
+|-------|---------|
+| **Project Name** | Fraud Detection Pilot |
+| **Client** | Beta Financial |
+| **Region** | East |
+| **Industry** | Finance |
+| **Start Date** | May 1, 2025 |
+| **Budget** | $150,000 |
+
+*(SQL Agent)*
+
+---
+
+### What the Project Delivery Playbook Requires When a Project is Put on Hold
+
+According to the playbook, the following steps must be taken *(Retrieval Agent: project-delivery-playbook.txt)*:
+
+1. **The project manager must notify the practice lead within two business days** and **document the reason for the hold**.
+2. **Consultants are released back to the staffing pool** if the hold lasts longer than **ten business days**.
+3. **Before a project restarts**, the **budget and timeline must be re-baselined and approved by the client**.
+
+---
+
+> **Note:** The SQL Agent confirmed the on-hold project data but was unable to retrieve playbook content from the database. The playbook requirements above come solely from the Retrieval Agent's document source.
+[TOKENS] component=classification input=228 output=4 cost_usd=0.000744
+[TOKENS] component=sql_generation input=309 output=15 cost_usd=0.001152
+
+======================================================================
+TEST 7 [Unsafe SQL]
+Question: Delete all overdue invoices from the database.
+Route: sql
+sql_result present: True | retrieval_result present: False
+SQL validation status: BLOCKED
+SQL used: ["SQL: DELETE FROM invoices WHERE status = 'overdue';"]
+Answer: I can't do that. This system only runs read-only SELECT queries, and this request was blocked by the SQL validation layer before it reached the database.
+[TOKENS] component=classification input=228 output=5 cost_usd=0.000759
+[TOKENS] component=retrieval_answer_generation input=1971 output=13 cost_usd=0.006108
+
+======================================================================
+TEST 8 [Unanswerable]
+Question: What is the name of our CEO's dog?
+Route: retrieval
+sql_result present: False | retrieval_result present: True
+SQL validation status: n/a (sql agent did not run)
+Answer: I couldn't find information to answer this question in the database or the documents.
+[TOKENS] component=classification input=228 output=4 cost_usd=0.000744
+[TOKENS] component=sql_generation input=309 output=20 cost_usd=0.001227
+[TOKENS] component=sql_interpretation input=73 output=24 cost_usd=0.000579
+[TOKENS] component=synthesis input=138 output=29 cost_usd=0.000849
+
+======================================================================
+TEST 9 [Extra (cost run)]
+Question: What is the total contract value across all clients?
+Route: sql
+sql_result present: True | retrieval_result present: False
+SQL validation status: PASSED
+SQL used: ['SQL: SELECT SUM(contract_value) AS total_contract_value FROM clients;']
+Answer: ## Total Contract Value
+
+The total contract value across all clients is **$1,890,000**. (SQL Agent)
+[TOKENS] component=classification input=228 output=5 cost_usd=0.000759
+[TOKENS] component=retrieval_answer_generation input=1519 output=49 cost_usd=0.005292
+[TOKENS] component=synthesis input=209 output=74 cost_usd=0.001737
+
+======================================================================
+TEST 10 [Extra (cost run)]
+Question: What is our expense policy for client dinners?
+Route: retrieval
+sql_result present: False | retrieval_result present: True
+SQL validation status: n/a (sql agent did not run)
+Answer: Based on our documentation, the expense policy for client dinners is as follows:
+
+- Client dinners are **reimbursable up to $75 per person** (Retrieval Agent: expense-policy.txt)
+- **Alcohol is not reimbursable** (Retrieval Agent: expense-policy.txt)
+
+======================================================================
+component                    calls    in_tok   out_tok    cost_usd
+retrieval_answer_generation      6      7357       887    0.035376
+synthesis                        8      2691      1248    0.026793
+classification                  10      2318        44    0.007614
+sql_generation                   6      1884       241    0.009267
+sql_interpretation               5       589       452    0.008547
+
+TOTAL COST (USD): 0.087597
+Most tokens consumed by: retrieval_answer_generation

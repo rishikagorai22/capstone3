@@ -1,0 +1,87 @@
+[TOKENS] component=classification input=226 output=4 cost_usd=0.000738
+[TOKENS] component=sql_generation input=307 output=24 cost_usd=0.001281
+[TOKENS] component=sql_interpretation input=70 output=16 cost_usd=0.000450
+[TOKENS] component=synthesis input=139 output=23 cost_usd=0.000762
+
+============================================================
+Q: How many active projects do we have?
+Route: sql
+Answer: Based on the available information, you currently have **5 active projects**. (SQL Agent)
+Total tokens: {'input_tokens': 742, 'output_tokens': 67, 'cost_usd': 0.0032309999999999995}
+[TOKENS] component=classification input=230 output=5 cost_usd=0.000765
+[TOKENS] component=retrieval_answer_generation input=855 output=326 cost_usd=0.007455
+[TOKENS] component=synthesis input=486 output=473 cost_usd=0.008553
+
+============================================================
+Q: What is our onboarding process for new consultants?
+Route: retrieval
+Answer: ## New Consultant Onboarding Process
+
+Here is our onboarding process for new consultants, based on available documentation:
+
+---
+
+### Before the Start Date
+- IT ships a laptop and sets up accounts *(Retrieval Agent: onboarding-process.txt)*
+
+### Day One
+- Meet their onboarding buddy *(Retrieval Agent: onboarding-process.txt)*
+- Complete security and compliance training *(Retrieval Agent: onboarding-process.txt)*
+- Receive access to the time-tracking system *(Retrieval Agent: onboarding-process.txt)*
+
+### Week One
+- Attend firm orientation *(Retrieval Agent: onboarding-process.txt)*
+- Meet their practice lead *(Retrieval Agent: onboarding-process.txt)*
+
+### Weeks Two & Three
+- Shadow an active client engagement *(Retrieval Agent: onboarding-process.txt)*
+- Begin logging billable hours under supervision *(Retrieval Agent: onboarding-process.txt)*
+- Note: New hires are required to work **on-site during their first two weeks** *(Retrieval Agent: remote-work-policy.txt)*
+
+### Week Four
+- Take on a first assigned task *(Retrieval Agent: onboarding-process.txt)*
+
+### Role-Specific Training (First Month)
+- **Associates** complete a **two-day analytics tooling workshop** *(Retrieval Agent: project-delivery-playbook.txt)*
+- **Senior hires and Principals** complete a **one-day client-engagement leadership session** instead *(Retrieval Agent: project-delivery-playbook.txt)*
+
+### Mandatory Requirement
+- Every new consultant must complete the **mandatory data-handling course** before being granted access to any client data *(Retrieval Agent: project-delivery-playbook.txt)*
+
+### Ongoing Check-ins
+- Check-in meetings with the practice lead occur at **30, 60, and 90 days** *(Retrieval Agent: onboarding-process.txt)*
+Total tokens: {'input_tokens': 1571, 'output_tokens': 804, 'cost_usd': 0.016773}
+[TOKENS] component=classification input=235 output=4 cost_usd=0.000765
+[TOKENS] component=sql_generation input=316 output=24 cost_usd=0.001308
+[TOKENS] component=sql_interpretation input=79 output=83 cost_usd=0.001482
+[TOKENS] component=retrieval_answer_generation input=1093 output=311 cost_usd=0.007944
+[TOKENS] component=synthesis input=601 output=377 cost_usd=0.007458
+
+============================================================
+Q: How many active projects do we have, and what is our onboarding process?
+Route: both
+Answer: ## Answer
+
+**Number of Active Projects:**
+There are **5 active projects** (SQL Agent). The Retrieval Agent also references one specific active project — the **Customer Portal project**, which modernizes an online service for a fictional retail client with an approved budget of USD 120,000 (Retrieval Agent: q2-2026-client-report.pdf).
+
+---
+
+**Onboarding Process:**
+All new consultants follow a **four-week onboarding program** (Retrieval Agent: onboarding-process.txt):
+
+- **Before start date:** IT ships a laptop and sets up accounts
+- **Day 1:** Meet onboarding buddy, complete security and compliance training, and receive access to the time-tracking system
+- **Week 1:** Attend firm orientation and meet the practice lead
+- **Weeks 2–3:** Shadow an active client engagement and begin logging billable hours under supervision
+- **Week 4:** Take on a first assigned task
+- **30, 60, and 90-day check-ins** with the practice lead
+- **Associates** complete a two-day analytics tooling workshop in their first month
+- **Senior hires and Principals** complete a one-day workshop *(note: details appear incomplete in the source document)*
+
+(All onboarding details: Retrieval Agent: onboarding-process.txt)
+
+---
+
+> **Note:** The SQL Agent was only able to return a project count and had no onboarding data available. The full details of the onboarding program for Senior hires and Principals could not be fully confirmed as the source document appears to be cut off (Retrieval Agent: onboarding-process.txt).
+Total tokens: {'input_tokens': 2324, 'output_tokens': 799, 'cost_usd': 0.018957}

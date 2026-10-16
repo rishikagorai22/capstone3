@@ -1,0 +1,2 @@
+BLOCKED | Blocked: 'DELETE' is not permitted. Only SELECT queries are allowed.
+BLOCKED | Blocked: multiple statements detected (possible stacked query attempt).

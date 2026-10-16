@@ -1,0 +1,11 @@
+2026-10-15T16:39:53 INIT_START Runtime Version: python:3.12.mainlinev2.v43	Runtime Version ARN: arn:aws:lambda:us-east-1::runtime:36aeb19f3326e129d9f096dea0a3c6a9ca8dce2610e62d2b2060747602d863ae
+2026-10-15T16:39:57 [0;93m2026-10-15 16:39:57.228363806 [W:onnxruntime:Default, telemetry_1ds.cc:600 operator()] Failed to persist telemetry device ID; using an in-memory identifier[m
+2026-10-15T16:39:57 START RequestId: a6a79d63-dcd9-4837-922a-c00d8c134959 Version: $LATEST
+2026-10-15T16:39:58 [TOKENS] component=classification input=243 output=4 cost_usd=0.000789
+2026-10-15T16:39:59 [TOKENS] component=sql_generation input=324 output=24 cost_usd=0.001332
+2026-10-15T16:40:00 [TOKENS] component=sql_interpretation input=87 output=79 cost_usd=0.001446
+2026-10-15T16:40:08 [TOKENS] component=retrieval_answer_generation input=945 output=203 cost_usd=0.005880
+2026-10-15T16:40:11 [TOKENS] component=synthesis input=483 output=300 cost_usd=0.005949
+2026-10-15T16:40:11 RESULT {"route": "both", "sql_validation": "PASSED", "token_usage_total": {"input_tokens": 2082, "output_tokens": 610, "cost_usd": 0.015396}}
+2026-10-15T16:40:11 END RequestId: a6a79d63-dcd9-4837-922a-c00d8c134959
+2026-10-15T16:40:11 REPORT RequestId: a6a79d63-dcd9-4837-922a-c00d8c134959	Duration: 14379.79 ms	Billed Duration: 18116 ms	Memory Size: 512 MB	Max Memory Used: 450 MB	Init Duration: 3735.57 ms
